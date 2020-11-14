@@ -30,10 +30,10 @@ import chillhop from './data';
 
 
 function App() {
+  const [songs, setSongs] = useState(chillhop());
+  const [currentSong, setCurrentSong] = useState(songs[0]);
+  
   return (
-
-    // const [songs, setSongs] = useState(chillhop());
-
     <div className="App">
       <Player />
       <Song />

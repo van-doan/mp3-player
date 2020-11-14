@@ -1,15 +1,17 @@
 import React from 'react';
 
-
-const Song = () => {
+const Song = ({ currentSong, isPlaying }) => {
   return (
     <div className="song-container">
-      <img src={currentSong.cover}></img>
-      <h1>Song Name</h1>
-      <h1>Artist</h1>
-    </div>
-    
-  )
-}
+      <img 
+        className={isPlaying ? "rotateSong": ""}
+        src={currentSong.cover}
+        alt=""
+      />
+      <h1>{currentSong.name}</h1>
+      <h1>{currentSong.artist}</h1>
+    </div> 
+  );
+};
 
 export default Song;
