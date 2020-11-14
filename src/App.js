@@ -1,7 +1,7 @@
 /////////////////////
 // Global Imports //
 ///////////////////
-import React from 'react';
+import React, {useState, useRef} from 'react';
 
 ////////////////////
 // Styles Import //
@@ -16,7 +16,6 @@ import Song from './components/Song';
 import Player from './components/Player';
 import Nav from './components/Nav';
 import Library from './components/Library';
-import LibrarySong from './components/LibrarySong';
 
 //////////////////
 // Data Import //
@@ -79,12 +78,35 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Nav />
-      <Song />
-      <Player />
-      <Library />
-      <Player />
+    <div className={`App ${libraryStatus ? "library-active": ""}`}>
+      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
+      <Song isPlaying={isPlaying} currentSong={currentSong} />
+      <Player 
+        audioRef={audioRef}
+        setIsPlaying={setIsPlaying}
+        currentSong={currentSong}
+        isPlaying={isPlaying}
+        songInfo={songInfo}
+        setSongInfo={setSongInfo}
+        songs={songs}
+        setSongs={setSongs}
+        setCurrentSong={setCurrentSong}
+      />
+      <Library 
+        audioRef={audioRef}
+        songs={songs}
+        setCurrentSong={setCurrentSong}
+        isPlaying={isPlaying}
+        setSongs={setSongs}
+        libraryStatus={libraryStatus}
+      />
+      <audio 
+        onLoadedMetadata = {timeUpdateHandler}
+        onTimeUpdate = {timeUpdateHandler}
+        ref={audioRef}
+        src={currentSong.audio}
+        onEnded={songEndHandler}
+      ></audio>
     </div>
   );
 }
