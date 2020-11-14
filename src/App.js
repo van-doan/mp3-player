@@ -13,7 +13,6 @@ import './styles/app.scss';
 //////////////////////
 import Player from './components/Player';
 import Song from './components/Song';
-import Player from './components/Player';
 import Nav from './components/Nav';
 import Library from './components/Library';
 
@@ -25,7 +24,7 @@ import chillhop from './data';
 /////////////////////
 // Utility Import //
 ///////////////////
-import { playAudio } from ".util";
+import { playAudio } from "./util";
 
 
 function App() {
@@ -41,6 +40,7 @@ function App() {
 
   const [songs, setSongs] = useState(chillhop());
   const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,

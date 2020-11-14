@@ -9,7 +9,7 @@ const Song = ({ currentSong, isPlaying }) => {
         alt=""
       />
       <h1>{currentSong.name}</h1>
-      <h1>{currentSong.artist}</h1>
+      <h2>{currentSong.artist}</h2>
     </div> 
   );
 };
