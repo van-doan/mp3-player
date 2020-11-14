@@ -26,7 +26,7 @@
     font-weight: 400;
   }
   
-  @import "./song";
-  @import "./player";
-  @import "./library";
-  @import "./nav";
+  @import "./partials/song";
+  @import "./partials/player";
+  @import "./partials/library";
+  @import "./partials/nav";
