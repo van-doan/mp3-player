@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, 
-    faAngleLeft, 
-    faAngleRight,
-    faPause,
-    faVolumeDown,
-} from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlay,
+  faAngleLeft,
+  faAngleRight,
+  faPause,
+  faVolumeDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { playAudio } from "../util";
-
 
 const Player = ({
   isPlaying,
@@ -20,10 +20,11 @@ const Player = ({
   songs,
   setCurrentSong,
   setSongs,
- }) => {
+}) => {
   const [activeVolume, setActiveVolume] = useState(false);
+  //UseEffect Update List
   const activeLibraryHandler = (nextPrev) => {
-    const newSongs = songs.map((song => {
+    const newSongs = songs.map((song) => {
       if (song.id === nextPrev.id) {
         return {
           ...song,
@@ -33,25 +34,22 @@ const Player = ({
         return {
           ...song,
           active: false,
-        }
+        };
       }
-    }));
+    });
 
     setSongs(newSongs);
-  }
+  };
 
   const trackAnim = {
     transform: `translateX(${songInfo.animationPercentage}%)`,
   };
-
+  //Event Handlers
   function getTime(time) {
     return (
-      Math.floor(time / 60 ) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
-      );
-    }
-
-  console.log(getTime())
-
+      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
+    );
+  }
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value;
     setSongInfo({ ...songInfo, currentTime: e.target.value });
@@ -66,7 +64,6 @@ const Player = ({
       setIsPlaying(!isPlaying);
     }
   };
-  
   const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
 

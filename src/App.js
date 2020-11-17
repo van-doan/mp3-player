@@ -53,7 +53,7 @@ function App() {
 ///////////////////////////////////
   const [libraryStatus, setLibraryStatus] = useState(false);
   const timeUpdateHandler = (e) => {
-    const current = e.target.currenTime;
+    const current = e.target.currentTime;
     const duration = e.target.duration;
 
     const roundedCurrent = Math.round(current);
@@ -75,8 +75,7 @@ function App() {
     await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
     playAudio(isPlaying, audioRef);
     return;
-  }
-
+  };
   return (
     <div className={`App ${libraryStatus ? "library-active": ""}`}>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
